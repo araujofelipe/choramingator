@@ -19,13 +19,17 @@ get '/about' do
 end
 
 post '/chora' do
-  choramingo = Choramingo.create(:nome => params[:nome], :choro => params[:choro], :created_at => Time.now)
-  if choramingo.nome== '' 
-  	choramingo.nome= 'Anonimo'
-  end
-  choramingo.retira_palavroes
-  choramingo.save
-  choramingo.to_json
+	  choramingo = Choramingo.create({:nome => params[:nome], :choro => params[:choro], :created_at => Time.now})
+	  if choramingo.nome== '' 
+	  	choramingo.nome= 'Anonimo'
+	  end
+	  choramingo.retira_palavroes
+	begin
+	  choramingo.save!
+	  'Sucess!'
+	rescue MongoMapper::DocumentNotValid => e
+	  e.exception.to_s
+	end	
 end
 
 get '/all' do

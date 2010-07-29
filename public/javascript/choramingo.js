@@ -15,9 +15,9 @@ function chorar(){
 	var nome = $('#nome').val();
 	var choro = $('#choro').val();
 	$.post('/chora',{'nome':nome,'choro':choro}, function(data){
-		
+		$('#notice').html(data);
 		$('#notice').css('display', 'block')
-		$('#notice').fadeOut(1000, function(){});
+		$('#notice').fadeOut(5000, function(){});
 		printResult(data);
 		
 	})
