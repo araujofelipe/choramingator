@@ -1,0 +1,58 @@
+%html
+	%head
+		%meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+		%meta{ :name => "description", :content => "" }
+		%meta{ :name => "keywords", :content => "" }
+		%meta{ :content => "en-US", "http-equiv" => "content-Language" }
+		%meta{ :content => "width=device-width, initial-scale = 1.0, user-scalable=yes", "name" => "viewport" }
+
+	 
+		%title
+			Choramingator Tabajara Plus!
+		%script{ :src => "/javascript/jquery-1.4.2.min.js"}
+		%script{ :src => "/javascript/choramingo.js"}
+		%link{ :href => "/css/styles.css", :rel => "stylesheet", :type => "text/css", :media => "screen, print" }
+	%body
+		#header
+			%h1
+				Choramingator Tabajara Plus!
+			%h3{:id => 'subtitulo'}
+				Chore aqui o que te der na telha, desabafe.
+			%a{:href => '/'}
+				Home
+			%a{:href => '/about'}
+				Sobre
+		#content
+			%div{:id => 'notice'}
+				Choro inserido com sucesso.
+			%div{:id => 'form'}
+				%form{ :method => 'post' , :action => 'chora'}
+					%fieldset
+						%label
+							Nome: 
+							%br
+							%input{:type => 'text', :id => 'nome', :name => 'nome'}
+						%br
+						%label
+							Choramingo:
+							%br
+							%textarea{:id => 'choro',:name => 'choro' }
+
+						%input{:type => 'button', :value => 'Choramingar!!!', :class => 'button', :onclick => "chorar();"}
+			%div{:id => 'choramingos' }
+				- list = @choramingos
+				- list.each do |l|
+					%div{:class => 'choramingo_item', :id => "choramingo_item_#{l.id}"}
+						%span{:id => 'span_label_choramingo' }
+							Nome:
+						=l.nome
+						%br
+						%span{:id => 'span_label_choramingo' }
+							Choramingo:
+						= l.choro
+						%br
+						%br
+			%a{:href => '/all'}
+				Ver Todos
+		#footer
+			Tudo nosso CC.
