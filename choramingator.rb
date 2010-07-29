@@ -5,7 +5,7 @@ require 'mongo_mapper'
 require File.expand_path(File.dirname(__FILE__) + "/models/choramingo.rb")
 
 get '/' do
-   @choramingos = Choramingo.all({limit:4}).sort_by(&:created_at).reverse
+   @choramingos = Choramingo.all.sort_by(&:created_at).reverse
    haml :index
 end
 
@@ -19,16 +19,11 @@ get '/about' do
 end
 
 post '/chora' do
-  choramingo = Choramingo.new
-  choramingo.nome= params[:nome]
-  
-  if choramingo.nome == '' 
+  choramingo = Choramingo.create(:nome => params[:nome], :choro => params[:choro], :created_at => Time.now)
+  if choramingo.nome== '' 
   	choramingo.nome= 'Anonimo'
   end
-  
-  choramingo.choro= params[:choro]
   choramingo.retira_palavroes
-  choramingo.created_at= Time.now
   choramingo.save
   choramingo.to_json
 end
