@@ -5,7 +5,7 @@ require 'mongo_mapper'
 require File.expand_path(File.dirname(__FILE__) + "/models/choramingo.rb")
 
 get '/' do
-   @choramingos = Choramingo.all.sort_by(&:created_at).reverse
+   @choramingos = Choramingo.all(limit:5).sort_by(&:created_at).reverse
    haml :index
 end
 
@@ -26,7 +26,7 @@ post '/chora' do
 	  choramingo.retira_palavroes
 	begin
 	  choramingo.save!
-	  'Sucess!'
+	  {'message'=> 'Sucess!', 'nome'=> choramingo.nome, 'choro'=>choramingo.choro, 'id' => choramingo.id}.to_json
 	rescue MongoMapper::DocumentNotValid => e
 	  e.exception.to_s
 	end	
