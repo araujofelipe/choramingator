@@ -15,7 +15,7 @@ class Choramingo
 		self.choro.split(' ').each do |f|
 			palavroes[0].each do |p|
 				if p[0] == f
-						self.choro = self.choro.gsub(p[0],p[1])		
+					self.choro = self.choro.gsub(p[0],p[1])		
 				end
 			end			
 		end
