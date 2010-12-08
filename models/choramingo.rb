@@ -1,6 +1,5 @@
 require 'rubygems'
-require 'mongo'
-require 'mongo_mapper'
+require 'dm-core'
 require File.expand_path(File.dirname(__FILE__) + "/../db/palavras_feias.rb")
 
 class Choramingo

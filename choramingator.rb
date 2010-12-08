@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'mongo'
-require 'mongo_mapper'
+require 'dm-core'
 require File.expand_path(File.dirname(__FILE__) + "/models/choramingo.rb")
 
 get '/' do
