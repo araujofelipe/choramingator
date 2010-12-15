@@ -15,7 +15,7 @@ class Choramingo
 	  palavroes = PalavrasFeias.all
 		self.choro.split(' ').each do |f|
 			palavroes[0].each do |p|
-				 p[0].equal? f
+				if p[0] == f
 					self.choro = self.choro.gsub(p[0],p[1])		
 				end
 			end			
