@@ -9,8 +9,8 @@ get '/' do
 end
 
 configure :development do
-	MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
-	MongoMapper.database = 'choramingador'
+  DataMapper.setup(:default, 'postgres://postgres:12345678@localhost/choramingator')
+  
 end
 
 get '/about' do 
