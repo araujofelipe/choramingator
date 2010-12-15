@@ -1,13 +1,15 @@
 require 'rubygems'
 require 'dm-core'
+require 'dm_migrations'
 require File.expand_path(File.dirname(__FILE__) + "/../db/palavras_feias.rb")
 
 class Choramingo
-	include MongoMapper::Document
+	include DataMapper::Resource
   
-  key :nome, String
-  key :choro, String , {:required => true}
-  key :created_at, Time
+  property :id, Serial
+  property :nome, String
+  property :choro, String , {:required => true}
+  property :created_at, Time
 
   def retira_palavroes 
 	  palavroes = PalavrasFeias.all
@@ -20,5 +22,7 @@ class Choramingo
 		end
   end
 	
+	
 
 end
+DataMapper.auto_migrate!
