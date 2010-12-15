@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'dm-core'
-require 'dm_migrations'
+require 'dm-migrations'
 require File.expand_path(File.dirname(__FILE__) + "/../db/palavras_feias.rb")
 
 class Choramingo
@@ -15,7 +15,7 @@ class Choramingo
 	  palavroes = PalavrasFeias.all
 		self.choro.split(' ').each do |f|
 			palavroes[0].each do |p|
-				if p[0] == f
+				 p[0].equal? f
 					self.choro = self.choro.gsub(p[0],p[1])		
 				end
 			end			
@@ -25,4 +25,4 @@ class Choramingo
 	
 
 end
-DataMapper.auto_migrate!
+

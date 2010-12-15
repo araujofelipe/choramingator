@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'dm-core'
+require 'dm-migrations'
 require File.expand_path(File.dirname(__FILE__) + "/models/choramingo.rb")
 
 get '/' do
@@ -10,7 +11,7 @@ end
 
 configure :development do
   DataMapper.setup(:default, 'postgres://postgres:12345678@localhost/choramingator')
-  
+  DataMapper.auto_migrate!
 end
 
 get '/about' do 
@@ -26,8 +27,8 @@ post '/chora' do
 	begin
 	  choramingo.save!
 	  {'message'=> 'Sucess!', 'nome'=> choramingo.nome, 'choro'=>choramingo.choro, 'id' => choramingo.id}.to_json
-	rescue MongoMapper::DocumentNotValid => e
-	  e.exception.to_s
+	#rescue DataMapper::DocumentNotValid => e
+	 # e.exception.to_s
 	end	
 end
 
