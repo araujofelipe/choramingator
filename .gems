@@ -1,5 +1,7 @@
 'haml'
 'sinatra'
-'mongo'
-'mongo_mapper'
-'bson_ext'
+'dm-core'
+'dm-migrations'
+'do_postgres'
+'json'
+
