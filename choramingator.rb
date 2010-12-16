@@ -12,12 +12,12 @@ end
 
 configure :development do
   DataMapper.setup(:default, 'postgres://postgres:12345678@localhost/choramingator')
-  #DataMapper.auto_migrate!
+  DataMapper.auto_migrate!
 end
 
 get '/about' do 
 	'Esse site foi feito apenas para desabafar.'
-
+end
 post '/chora' do
 	  choramingo = Choramingo.create({:nome => params[:nome], :choro => params[:choro], :created_at => Time.now})
 	  if choramingo.nome== '' 

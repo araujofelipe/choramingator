@@ -8,7 +8,7 @@ class Choramingo
   
   property :id, Serial
   property :nome, String
-  property :choro, String , {:required => true}
+  property :choro, Text , {:required => true}
   property :created_at, Time
 
   def retira_palavroes 
